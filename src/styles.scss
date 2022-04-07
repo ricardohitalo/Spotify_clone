@@ -7,7 +7,20 @@ html, body {
     background-color: $cor-fundo;
 }
 
+.text-white {
+    color: $texto-branco;
+}
+
 * {
     font-family: 'Montserrat', sans-serif;
     box-sizing:  border-box;
+}
+
+.flex {
+    display: flex;
+
+    &-center {
+        justify-content: center;
+        align-items: center;
+    }
 }
