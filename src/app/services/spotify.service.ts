@@ -7,9 +7,11 @@ import Spotify from 'spotify-web-api-js'
 })
 export class SpotifyService {
 
-  spotifyApi: Spotify.SpotifyWebApiJs
+  spotifyApi: Spotify.SpotifyWebApiJs = null;
 
-  constructor() { }
+  constructor() {
+    this.spotifyApi = new Spotify()
+  }
 
   getUrlLogin() {
     const authEndpoint = `${spotifyConfiguration.authEndpoint}?`;
@@ -22,7 +24,6 @@ export class SpotifyService {
   }
 
   getToken() {
-    // console.log(window.location.hash)
     if (!window.location.hash)
       return ''
 
@@ -34,5 +35,7 @@ export class SpotifyService {
   accessToken(token: string) {
     this.spotifyApi.setAccessToken(token)
     localStorage.setItem('token', token)
+
+    this.spotifyApi.skipToNext()
   }
 }
